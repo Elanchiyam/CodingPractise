@@ -1,4 +1,4 @@
-package com.practise.array;
+package com.practise.arrays;
 /*
 Maximum Sub array
  */
@@ -9,6 +9,19 @@ public class CP_1_MaximumSumSubArray {
         int[] arr = new int[]{1,-3,2,1,-1};
 
         System.out.println(bruteforceApproach(arr));
+        System.out.println(kadaneAlgorithm(arr));
+    }
+
+    private static int kadaneAlgorithm(int[] arr){
+        int max_global = arr[0];
+        int max_current = arr[0];
+
+        for(int i=1;i<arr.length;i++){
+            max_current = Math.max(arr[i], max_current+arr[i]);
+            if(max_global<max_current)
+                max_global = max_current;
+        }
+        return max_global;
     }
 
     private static int bruteforceApproach(int[] arr) {
